@@ -8,11 +8,13 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
+      background: url('https://cdn.pixabay.com/photo/2016/11/29/03/35/popcorn-1867177_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
+      backdrop-filter: brightness(0.5);
     }
     header, footer {
-      background-color: #1f1f1f;
+      background-color: rgba(0, 0, 0, 0.8);
       padding: 1rem;
       text-align: center;
     }
@@ -27,7 +29,7 @@
       padding: 1rem;
     }
     .card {
-      background-color: #2c2c2c;
+      background-color: rgba(0,0,0,0.7);
       border-radius: 8px;
       overflow: hidden;
       width: 300px;
@@ -36,7 +38,6 @@
     .card img {
       width: 100%;
       height: auto;
-      display: block;
     }
     .card-content {
       padding: 0.5rem;
@@ -48,14 +49,35 @@
       padding: 2rem 1rem;
     }
     .plan {
-      background-color: #2c2c2c;
+      background-color: rgba(0, 0, 0, 0.8);
       padding: 1rem;
       border-radius: 8px;
       width: 200px;
       text-align: center;
     }
+    .highlight {
+      background-color: #00c853;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.2rem;
+      margin: 2rem auto;
+      width: fit-content;
+      border-radius: 6px;
+    }
+    .highlight a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .highlight:hover {
+      background-color: #00e676;
+    }
     .faq {
       padding: 2rem 1rem;
+      background-color: rgba(0,0,0,0.7);
+      border-radius: 10px;
+      margin: 1rem;
     }
     .faq-item {
       margin-bottom: 1rem;
@@ -77,6 +99,7 @@
       background-color: #2c2c2c;
       border-radius: 4px;
       margin-top: 0.5rem;
+      display: none;
     }
     a {
       color: #1e90ff;
@@ -94,27 +117,31 @@
   <p>Assista aos melhores filmes, séries e futebol ao vivo!</p>
 </header>
 
+<div class="highlight">
+  Teste grátis disponível! <a href="https://wa.me/5533999574160" target="_blank">Clique aqui para ativar via WhatsApp</a>
+</div>
+
 <main>
   <section class="cards">
     <article class="card">
-      <img src="https://cdn.pixabay.com/photo/2020/05/22/10/05/cinema-5208575_1280.jpg" alt="Filme em exibição">
+      <img src="https://cdn.pixabay.com/photo/2020/11/22/20/13/cinema-5765689_1280.jpg" alt="Cinema moderno">
       <div class="card-content">
-        <h3>Estreias de Filmes 2025</h3>
-        <p>Confira os lançamentos mais aguardados do ano.</p>
+        <h3>Filmes 2025</h3>
+        <p>Os lançamentos mais esperados em alta definição.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://cdn.pixabay.com/photo/2017/08/02/01/01/cinema-2562600_1280.jpg" alt="Série em exibição">
+      <div class="card-content">
+        <h3>Séries Top</h3>
+        <p>Novidades para maratonar em 2025.</p>
       </div>
     </article>
     <article class="card">
       <img src="https://cdn.pixabay.com/photo/2016/11/29/09/08/football-1867164_1280.jpg" alt="Partida de futebol">
       <div class="card-content">
         <h3>Futebol ao Vivo</h3>
-        <p>Assista aos principais campeonatos ao vivo.</p>
-      </div>
-    </article>
-    <article class="card">
-      <img src="https://cdn.pixabay.com/photo/2017/08/02/01/01/cinema-2562600_1280.jpg" alt="Cena de série">
-      <div class="card-content">
-        <h3>Séries Imperdíveis</h3>
-        <p>As melhores séries para maratonar em 2025.</p>
+        <p>Campeonatos nacionais e internacionais ao seu alcance.</p>
       </div>
     </article>
   </section>
@@ -122,12 +149,12 @@
   <section class="plans">
     <div class="plan">
       <h2>Plano 1 Tela</h2>
-      <p>Assista em 1 dispositivo simultaneamente</p>
+      <p>1 dispositivo simultâneo</p>
       <p><strong>R$ 30,00 / mês</strong></p>
     </div>
     <div class="plan">
       <h2>Plano 2 Telas</h2>
-      <p>Assista em até 2 dispositivos ao mesmo tempo</p>
+      <p>Até 2 dispositivos simultâneos</p>
       <p><strong>R$ 45,00 / mês</strong></p>
     </div>
   </section>
@@ -136,49 +163,35 @@
     <h2>Perguntas Frequentes</h2>
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">O que é o ComboTv?</button>
-      <div class="faq-answer" style="display:none;">
-        ComboTv é um serviço de IPTV que oferece mais de 75 mil conteúdos em até 4K, incluindo filmes, séries e canais ao vivo.
-      </div>
+      <div class="faq-answer">ComboTv é um serviço de IPTV que oferece mais de 75 mil conteúdos em até 4K.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">Que tipos de conteúdos estão disponíveis no ComboTv?</button>
-      <div class="faq-answer" style="display:none;">
-        Oferecemos mais de 75 mil conteúdos entre filmes, séries, canais ao vivo, incluindo canais esportivos com futebol em alta qualidade.
-      </div>
+      <button class="faq-question" onclick="toggleFaq(this)">Que conteúdos estão disponíveis?</button>
+      <div class="faq-answer">Filmes, séries, canais ao vivo, esportes e mais.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">Posso usar em vários dispositivos?</button>
-      <div class="faq-answer" style="display:none;">
-        Sim! Temos planos para 1 ou 2 telas simultâneas, funcionando em smart TVs, celulares, computadores e tablets.
-      </div>
+      <button class="faq-question" onclick="toggleFaq(this)">Funciona em quais dispositivos?</button>
+      <div class="faq-answer">Smart TVs, celulares, tablets e computadores.</div>
     </div>
     <div class="faq-item">
       <button class="faq-question" onclick="toggleFaq(this)">Como funciona o teste grátis?</button>
-      <div class="faq-answer" style="display:none;">
-        Novos assinantes podem solicitar um teste gratuito para experimentar o serviço por tempo limitado, sem compromisso.
-      </div>
+      <div class="faq-answer">Você pode testar sem compromisso clicando no botão acima para falar via WhatsApp.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">Quais formas de pagamento são aceitas?</button>
-      <div class="faq-answer" style="display:none;">
-        Aceitamos Pix e cartões de crédito para facilitar sua assinatura.
-      </div>
+      <button class="faq-question" onclick="toggleFaq(this)">Quais formas de pagamento?</button>
+      <div class="faq-answer">Pix e cartões de crédito.</div>
     </div>
   </section>
 </main>
 
 <footer>
-  <p>Contato via WhatsApp: <a href="https://wa.me/5533999574160" target="_blank">33 99957-4160</a></p>
+  <p>Contato: <a href="https://wa.me/5533999574160" target="_blank">WhatsApp 33 99957-4160</a></p>
 </footer>
 
 <script>
   function toggleFaq(button) {
     const answer = button.nextElementSibling;
-    if (answer.style.display === "none") {
-      answer.style.display = "block";
-    } else {
-      answer.style.display = "none";
-    }
+    answer.style.display = answer.style.display === "none" || answer.style.display === "" ? "block" : "none";
   }
 </script>
 
