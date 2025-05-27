@@ -1,457 +1,185 @@
 <!DOCTYPE html>
-<html lang="pt-BR" >
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ComboTv - IPTV em até 4K</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ComboTv - Filmes, Séries e Futebol</title>
   <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
     body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #121212;
-      color: #eee;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      line-height: 1.5;
+      color: #fff;
     }
-    header {
-      background-color: #181818;
-      padding: 25px 30px;
-      border-bottom: 3px solid #f0a500;
-      text-align: center;
-      font-size: 3rem;
-      font-weight: 900;
-      color: #f0a500;
-      letter-spacing: 4px;
-      user-select: none;
-    }
-    main {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px 60px;
-      flex-grow: 1;
-    }
-    section {
-      margin-bottom: 50px;
-    }
-    h2.section-title {
-      font-size: 2.4rem;
-      color: #f0a500;
-      margin-bottom: 22px;
-      user-select: none;
+    header, footer {
+      background-color: #1f1f1f;
+      padding: 1rem;
       text-align: center;
     }
-
-    /* Cards grid */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 20px;
+    h1, h2, h3 {
+      margin: 0.5rem 0;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
     }
     .card {
-      background-color: #222;
-      border-radius: 14px;
+      background-color: #2c2c2c;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 0 12px #0008;
-      transition: box-shadow 0.3s ease;
-      cursor: default;
-      user-select: none;
-      display: flex;
-      flex-direction: column;
-      height: 350px;
-    }
-    .card:hover {
-      box-shadow: 0 0 20px #f0a500;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
     .card img {
       width: 100%;
-      height: 210px;
-      object-fit: cover;
-      border-bottom: 3px solid #f0a500;
-      pointer-events: none;
+      height: auto;
+      display: block;
     }
     .card-content {
-      padding: 15px 18px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 0.5rem;
     }
-    .card-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #f0a500;
-    }
-    .card-subtitle {
-      font-size: 1rem;
-      color: #ccc;
-    }
-
-    /* Plans */
     .plans {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-bottom: 60px;
+      gap: 2rem;
+      padding: 2rem 1rem;
     }
     .plan {
-      background-color: #222;
-      border-radius: 14px;
-      padding: 35px 28px;
-      border: 2.5px solid #444;
-      width: 300px;
+      background-color: #2c2c2c;
+      padding: 1rem;
+      border-radius: 8px;
+      width: 200px;
       text-align: center;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-      user-select: none;
     }
-    .plan:hover {
-      border-color: #f0a500;
-      box-shadow: 0 0 20px #f0a500;
-    }
-    .plan h2 {
-      font-size: 2.2rem;
-      color: #f0a500;
-      margin-bottom: 18px;
-    }
-    .plan p {
-      font-size: 1.15rem;
-      margin-bottom: 25px;
-      color: #ccc;
-    }
-    .price {
-      font-size: 2.6rem;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-
-    /* Trial */
-    .trial {
-      text-align: center;
-      font-style: italic;
-      font-size: 1.3rem;
-      color: #ddd;
-      margin-bottom: 70px;
-      user-select: none;
-    }
-
-    /* Payment */
-    .payment {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #ccc;
-      margin-bottom: 80px;
-      user-select: none;
-    }
-    .payment strong {
-      color: #f0a500;
-    }
-
-    /* FAQ */
     .faq {
-      max-width: 900px;
-      margin: 0 auto 80px;
-    }
-    .faq h3 {
-      font-size: 2rem;
-      color: #f0a500;
-      margin-bottom: 25px;
-      text-align: center;
-      user-select: none;
+      padding: 2rem 1rem;
     }
     .faq-item {
-      background: #222;
-      border-radius: 12px;
-      margin-bottom: 18px;
-      border: 2px solid #444;
-      overflow: hidden;
-      transition: border-color 0.3s ease;
-    }
-    .faq-item:hover {
-      border-color: #f0a500;
-      box-shadow: 0 0 12px #f0a500;
+      margin-bottom: 1rem;
     }
     .faq-question {
-      padding: 18px 25px;
-      font-size: 1.25rem;
-      font-weight: 700;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      text-align: left;
+      width: 100%;
       cursor: pointer;
-      color: #f0a500;
-      user-select: none;
-      position: relative;
-    }
-    .faq-question::after {
-      content: '+';
-      position: absolute;
-      right: 25px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.8rem;
-      transition: transform 0.3s ease;
-    }
-    .faq-item.open .faq-question::after {
-      content: '-';
-      transform: translateY(-50%) rotate(180deg);
+      padding: 0.5rem;
+      background-color: #1f1f1f;
+      border-radius: 4px;
     }
     .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 25px;
-      font-size: 1.1rem;
-      color: #ccc;
-      line-height: 1.5;
-      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0.5rem 1rem;
+      background-color: #2c2c2c;
+      border-radius: 4px;
+      margin-top: 0.5rem;
     }
-    .faq-item.open .faq-answer {
-      max-height: 300px;
-      padding: 15px 25px 25px;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #181818;
-      padding: 22px 20px;
-      text-align: center;
-      font-size: 1rem;
-      border-top: 3px solid #f0a500;
-      user-select: none;
-    }
-    a.whatsapp-link {
-      color: #25d366;
-      font-weight: 700;
+    a {
+      color: #1e90ff;
       text-decoration: none;
-      transition: color 0.3s ease;
     }
-    a.whatsapp-link:hover {
-      color: #1ebe57;
+    a:hover {
       text-decoration: underline;
-    }
-
-    /* Responsivo */
-    @media (max-width: 720px) {
-      .plans {
-        flex-direction: column;
-        align-items: center;
-      }
-      .plan {
-        width: 90%;
-      }
-      .cards-grid {
-        grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
-        gap: 15px;
-      }
-      .card {
-        height: 300px;
-      }
     }
   </style>
 </head>
 <body>
 
-<header>ComboTv</header>
+<header>
+  <h1>ComboTv</h1>
+  <p>Assista aos melhores filmes, séries e futebol ao vivo!</p>
+</header>
 
 <main>
-
-  <!-- Lançamentos Filmes -->
-  <section aria-label="Lançamentos de Filmes 2025">
-    <h2 class="section-title">Lançamentos de Filmes 2025</h2>
-    <div class="cards-grid">
-      <article class="card" tabindex="0">
-        <img src="https://image.tmdb.org/t/p/w500/kTJgbPWgTuRzi13VvY97m1C0A30.jpg" alt="Avatar: The Way of Water" />
-        <div class="card-content">
-          <h3 class="card-title">Avatar: O Caminho da Água</h3>
-          <p class="card-subtitle">Ação / Aventura</p>
-        </div>
-      </article>
-      <article class="card" tabindex="0">
-        <img src="https://image.tmdb.org/t/p/w500/qAZ0pzat24kLdO3o8ejmbLxyOac.jpg" alt="John Wick: Chapter 4" />
-        <div class="card-content">
-          <h3 class="card-title">John Wick 4</h3>
-          <p class="card-subtitle">Ação / Thriller</p>
-        </div>
-      </article>
-      <article class="card" tabindex="0">
-        <img src="https://image.tmdb.org/t/p/w500/aEb9og2yhRk0LULhK6pFy1qUNfA.jpg" alt="Guardians of the Galaxy Vol. 3" />
-        <div class="card-content">
-          <h3 class="card-title">Guardiões da Galáxia 3</h3>
-          <p class="card-subtitle">Ação / Sci-Fi</p>
-        </div>
-      </article>
-      <article class="card" tabindex="0">
-        <img src="https://image.tmdb.org/t/p/w500/6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg" alt="Black Panther: Wakanda Forever" />
-        <div class="card-content">
-          <h3 class="card-title">Pantera Negra: Wakanda Para Sempre</h3>
-          <p class="card-subtitle">Ação / Drama</p>
-        </div>
-      </article>
-    </div>
+  <section class="cards">
+    <article class="card">
+      <img src="https://cdn.pixabay.com/photo/2020/05/22/10/05/cinema-5208575_1280.jpg" alt="Filme em exibição">
+      <div class="card-content">
+        <h3>Estreias de Filmes 2025</h3>
+        <p>Confira os lançamentos mais aguardados do ano.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://cdn.pixabay.com/photo/2016/11/29/09/08/football-1867164_1280.jpg" alt="Partida de futebol">
+      <div class="card-content">
+        <h3>Futebol ao Vivo</h3>
+        <p>Assista aos principais campeonatos ao vivo.</p>
+      </div>
+    </article>
+    <article class="card">
+      <img src="https://cdn.pixabay.com/photo/2017/08/02/01/01/cinema-2562600_1280.jpg" alt="Cena de série">
+      <div class="card-content">
+        <h3>Séries Imperdíveis</h3>
+        <p>As melhores séries para maratonar em 2025.</p>
+      </div>
+    </article>
   </section>
 
-  <!-- Lançamentos Séries -->
-  <section aria-label="Lançamentos de Séries 2025">
-    <h2 class="section-title">Lançamentos de Séries 2025</h2>
-    <div class="cards-grid">
-      <article class="card" tabindex="0">
-        <img src="https://image.tmdb.org/t/p/w500/4JXGRFw2q36wQyb9zqNLdB7HqB1.jpg" alt="The Last of Us" />
-        <div class="card-content">
-          <h3 class="card-title">The Last of Us</h3>
-          <p class="card-subtitle">Drama / Ação</p>
-        </div>
-      </article>
-      <article class="card" tabindex="0">
-        <img src="https://image.tmdb.org/t/p/w500/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg" alt="Stranger Things" />
-        <div class="card-content">
-          <h3 class="card-title">Stranger Things (Temporada 5)</h3>
-          <p class="card-subtitle">Ficção / Suspense</p>
-        </div>
-      </article>
-      <article class="card" tabindex="0">
-        <img src="https://image.tmdb.org/t/p/w500/g2a0KJ6ayU8W5TeuTlgq3kp4JGo.jpg" alt="House of the Dragon" />
-        <div class="card-content">
-          <h3 class="card-title">House of the Dragon</h3>
-          <p class="card-subtitle">Fantasia / Drama</p>
-        </div>
-      </article>
-      <article class="card" tabindex="0">
-        <img src="https://image.tmdb.org/t/p/w500/7npqU7tUn6thTMyey3SHU2u0PEK.jpg" alt="The Mandalorian" />
-        <div class="card-content">
-          <h3 class="card-title">The Mandalorian</h3>
-          <p class="card-subtitle">Sci-Fi / Aventura</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Futebol -->
-  <section aria-label="Destaques Futebol 2025">
-    <h2 class="section-title">Destaques de Futebol 2025</h2>
-    <div class="cards-grid">
-      <article class="card" tabindex="0">
-        <img src="https://cdn.pixabay.com/photo/2016/03/27/19/55/football-1284239_960_720.jpg" alt="Jogadores comemorando gol" />
-        <div class="card-content">
-          <h3 class="card-title">Campeonato Brasileiro</h3>
-          <p class="card-subtitle">Ao vivo e em alta definição</p>
-        </div>
-      </article>
-      <article class="card" tabindex="0">
-        <img src="https://cdn.pixabay.com/photo/2016/11/29/05/08/football-1868816_960_720.jpg" alt="Jogador chutando bola" />
-        <div class="card-content">
-          <h3 class="card-title">Liga dos Campeões</h3>
-          <p class="card-subtitle">Transmissões exclusivas</p>
-        </div>
-      </article>
-      <article class="card" tabindex="0">
-        <img src="https://cdn.pixabay.com/photo/2017/01/20/00/30/soccer-1990348_960_720.jpg" alt="Estádio de futebol" />
-        <div class="card-content">
-          <h3 class="card-title">Copa do Mundo Feminina</h3>
-          <p class="card-subtitle">Cobertura completa</p>
-        </div>
-      </article>
-      <article class="card" tabindex="0">
-        <img src="https://cdn.pixabay.com/photo/2016/03/27/21/29/football-1284779_960_720.jpg" alt="Futebol no estádio" />
-        <div class="card-content">
-          <h3 class="card-title">Campeonatos Europeus</h3>
-          <p class="card-subtitle">Jogos ao vivo e replay</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Planos -->
-  <section aria-label="Planos ComboTv" class="plans">
-    <div class="plan" tabindex="0">
+  <section class="plans">
+    <div class="plan">
       <h2>Plano 1 Tela</h2>
       <p>Assista em 1 dispositivo simultaneamente</p>
-      <div class="price">R$ 30,00 / mês</div>
+      <p><strong>R$ 30,00 / mês</strong></p>
     </div>
-    <div class="plan" tabindex="0">
+    <div class="plan">
       <h2>Plano 2 Telas</h2>
       <p>Assista em até 2 dispositivos ao mesmo tempo</p>
-      <div class="price">R$ 45,00 / mês</div>
+      <p><strong>R$ 45,00 / mês</strong></p>
     </div>
   </section>
 
-  <p class="trial">Teste grátis disponível para novos assinantes.</p>
-  <p class="payment">Formas de pagamento: <strong>Pix</strong> e <strong>Cartões de Crédito</strong>.</p>
-
-  <!-- FAQ -->
-  <section aria-label="Perguntas Frequentes" class="faq">
-    <h3>Perguntas Frequentes</h3>
-
-    <div class="faq-item" role="region" aria-labelledby="q1">
-      <button class="faq-question" aria-expanded="false" aria-controls="a1" id="q1">
-        O que é o ComboTv?
-      </button>
-      <div class="faq-answer" id="a1" role="region" aria-labelledby="q1" hidden>
+  <section class="faq">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">O que é o ComboTv?</button>
+      <div class="faq-answer" style="display:none;">
         ComboTv é um serviço de IPTV que oferece mais de 75 mil conteúdos em até 4K, incluindo filmes, séries e canais ao vivo.
       </div>
     </div>
-
-    <div class="faq-item" role="region" aria-labelledby="q2">
-      <button class="faq-question" aria-expanded="false" aria-controls="a2" id="q2">
-        Que tipos de conteúdos estão disponíveis no ComboTv?
-      </button>
-      <div class="faq-answer" id="a2" role="region" aria-labelledby="q2" hidden>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">Que tipos de conteúdos estão disponíveis no ComboTv?</button>
+      <div class="faq-answer" style="display:none;">
         Oferecemos mais de 75 mil conteúdos entre filmes, séries, canais ao vivo, incluindo canais esportivos com futebol em alta qualidade.
       </div>
     </div>
-
-    <div class="faq-item" role="region" aria-labelledby="q3">
-      <button class="faq-question" aria-expanded="false" aria-controls="a3" id="q3">
-        Posso usar em vários dispositivos?
-      </button>
-      <div class="faq-answer" id="a3" role="region" aria-labelledby="q3" hidden>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">Posso usar em vários dispositivos?</button>
+      <div class="faq-answer" style="display:none;">
         Sim! Temos planos para 1 ou 2 telas simultâneas, funcionando em smart TVs, celulares, computadores e tablets.
       </div>
     </div>
-
-    <div class="faq-item" role="region" aria-labelledby="q4">
-      <button class="faq-question" aria-expanded="false" aria-controls="a4" id="q4">
-        Como funciona o teste grátis?
-      </button>
-      <div class="faq-answer" id="a4" role="region" aria-labelledby="q4" hidden>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">Como funciona o teste grátis?</button>
+      <div class="faq-answer" style="display:none;">
         Novos assinantes podem solicitar um teste gratuito para experimentar o serviço por tempo limitado, sem compromisso.
       </div>
     </div>
-
-    <div class="faq-item" role="region" aria-labelledby="q5">
-      <button class="faq-question" aria-expanded="false" aria-controls="a5" id="q5">
-        Quais formas de pagamento são aceitas?
-      </button>
-      <div class="faq-answer" id="a5" role="region" aria-labelledby="q5" hidden>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">Quais formas de pagamento são aceitas?</button>
+      <div class="faq-answer" style="display:none;">
         Aceitamos Pix e cartões de crédito para facilitar sua assinatura.
       </div>
     </div>
-
   </section>
-
 </main>
 
 <footer>
-  Contato via WhatsApp: <a href="https://wa.me/5533999574160" class="whatsapp-link" target="_blank" rel="noopener noreferrer">33 99957-4160</a>
+  <p>Contato via WhatsApp: <a href="https://wa.me/5533999574160" target="_blank">33 99957-4160</a></p>
 </footer>
 
 <script>
-  // FAQ toggle
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const btn = item.querySelector('.faq-question');
-    const answer = item.querySelector('.faq-answer');
-    btn.addEventListener('click', () => {
-      const isOpen = item.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen);
-      if(isOpen){
-        answer.removeAttribute('hidden');
-      } else {
-        answer.setAttribute('hidden', '');
-      }
-    });
-  });
+  function toggleFaq(button) {
+    const answer = button.nextElementSibling;
+    if (answer.style.display === "none") {
+      answer.style.display = "block";
+    } else {
+      answer.style.display = "none";
+    }
+  }
 </script>
 
 </body>
