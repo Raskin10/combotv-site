@@ -341,4 +341,118 @@
       <article class="card" tabindex="0">
         <img src="https://cdn.pixabay.com/photo/2016/11/29/05/08/football-1868816_960_720.jpg" alt="Jogador chutando bola" />
         <div class="card-content">
-          <h3 class="
+          <h3 class="card-title">Liga dos Campeões</h3>
+          <p class="card-subtitle">Transmissões exclusivas</p>
+        </div>
+      </article>
+      <article class="card" tabindex="0">
+        <img src="https://cdn.pixabay.com/photo/2017/01/20/00/30/soccer-1990348_960_720.jpg" alt="Estádio de futebol" />
+        <div class="card-content">
+          <h3 class="card-title">Copa do Mundo Feminina</h3>
+          <p class="card-subtitle">Cobertura completa</p>
+        </div>
+      </article>
+      <article class="card" tabindex="0">
+        <img src="https://cdn.pixabay.com/photo/2016/03/27/21/29/football-1284779_960_720.jpg" alt="Futebol no estádio" />
+        <div class="card-content">
+          <h3 class="card-title">Campeonatos Europeus</h3>
+          <p class="card-subtitle">Jogos ao vivo e replay</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Planos -->
+  <section aria-label="Planos ComboTv" class="plans">
+    <div class="plan" tabindex="0">
+      <h2>Plano 1 Tela</h2>
+      <p>Assista em 1 dispositivo simultaneamente</p>
+      <div class="price">R$ 30,00 / mês</div>
+    </div>
+    <div class="plan" tabindex="0">
+      <h2>Plano 2 Telas</h2>
+      <p>Assista em até 2 dispositivos ao mesmo tempo</p>
+      <div class="price">R$ 45,00 / mês</div>
+    </div>
+  </section>
+
+  <p class="trial">Teste grátis disponível para novos assinantes.</p>
+  <p class="payment">Formas de pagamento: <strong>Pix</strong> e <strong>Cartões de Crédito</strong>.</p>
+
+  <!-- FAQ -->
+  <section aria-label="Perguntas Frequentes" class="faq">
+    <h3>Perguntas Frequentes</h3>
+
+    <div class="faq-item" role="region" aria-labelledby="q1">
+      <button class="faq-question" aria-expanded="false" aria-controls="a1" id="q1">
+        O que é o ComboTv?
+      </button>
+      <div class="faq-answer" id="a1" role="region" aria-labelledby="q1" hidden>
+        ComboTv é um serviço de IPTV que oferece mais de 75 mil conteúdos em até 4K, incluindo filmes, séries e canais ao vivo.
+      </div>
+    </div>
+
+    <div class="faq-item" role="region" aria-labelledby="q2">
+      <button class="faq-question" aria-expanded="false" aria-controls="a2" id="q2">
+        Que tipos de conteúdos estão disponíveis no ComboTv?
+      </button>
+      <div class="faq-answer" id="a2" role="region" aria-labelledby="q2" hidden>
+        Oferecemos mais de 75 mil conteúdos entre filmes, séries, canais ao vivo, incluindo canais esportivos com futebol em alta qualidade.
+      </div>
+    </div>
+
+    <div class="faq-item" role="region" aria-labelledby="q3">
+      <button class="faq-question" aria-expanded="false" aria-controls="a3" id="q3">
+        Posso usar em vários dispositivos?
+      </button>
+      <div class="faq-answer" id="a3" role="region" aria-labelledby="q3" hidden>
+        Sim! Temos planos para 1 ou 2 telas simultâneas, funcionando em smart TVs, celulares, computadores e tablets.
+      </div>
+    </div>
+
+    <div class="faq-item" role="region" aria-labelledby="q4">
+      <button class="faq-question" aria-expanded="false" aria-controls="a4" id="q4">
+        Como funciona o teste grátis?
+      </button>
+      <div class="faq-answer" id="a4" role="region" aria-labelledby="q4" hidden>
+        Novos assinantes podem solicitar um teste gratuito para experimentar o serviço por tempo limitado, sem compromisso.
+      </div>
+    </div>
+
+    <div class="faq-item" role="region" aria-labelledby="q5">
+      <button class="faq-question" aria-expanded="false" aria-controls="a5" id="q5">
+        Quais formas de pagamento são aceitas?
+      </button>
+      <div class="faq-answer" id="a5" role="region" aria-labelledby="q5" hidden>
+        Aceitamos Pix e cartões de crédito para facilitar sua assinatura.
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  Contato via WhatsApp: <a href="https://wa.me/5533999574160" class="whatsapp-link" target="_blank" rel="noopener noreferrer">33 99957-4160</a>
+</footer>
+
+<script>
+  // FAQ toggle
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+      if(isOpen){
+        answer.removeAttribute('hidden');
+      } else {
+        answer.setAttribute('hidden', '');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
