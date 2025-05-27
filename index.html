@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,99 +14,153 @@
     }
     body {
       background-color: #121212;
-      color: #ddd;
-      line-height: 1.6;
+      color: #eee;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
     header {
-      background-color: #1f1f1f;
-      padding: 20px;
+      background-color: #181818;
+      padding: 20px 30px;
+      border-bottom: 2px solid #f0a500;
       text-align: center;
-      border-bottom: 1px solid #333;
-    }
-    header h1 {
-      color: #f0a500;
       font-weight: 700;
-      font-size: 2.5rem;
-      letter-spacing: 2px;
+      font-size: 2.8rem;
+      color: #f0a500;
+      letter-spacing: 3px;
+      user-select: none;
     }
     main {
       flex: 1;
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
-    .description {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      color: #bbb;
-      text-align: center;
+
+    /* Slideshow container */
+    .slideshow {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(240,165,0,0.5);
+      max-height: 400px;
+      margin-bottom: 40px;
     }
+
+    /* Slides */
+    .slide {
+      display: none;
+      position: relative;
+      height: 400px;
+      background-position: center;
+      background-size: cover;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active {
+      display: block;
+      animation: fadein 1s;
+    }
+    @keyframes fadein {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* Slide caption */
+    .caption {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      color: #f0a500;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+      font-size: 1.6rem;
+      font-weight: 700;
+      max-width: 70%;
+      user-select: none;
+    }
+
+    /* Plans */
     .plans {
       display: flex;
-      gap: 20px;
+      gap: 25px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
     }
     .plan {
       background-color: #222;
+      border-radius: 12px;
       border: 2px solid #444;
-      border-radius: 10px;
-      padding: 20px;
-      width: 250px;
+      padding: 30px 25px;
+      width: 280px;
       text-align: center;
-      transition: border-color 0.3s ease;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
     }
     .plan:hover {
       border-color: #f0a500;
+      box-shadow: 0 0 15px #f0a500;
     }
     .plan h2 {
+      font-size: 2rem;
       color: #f0a500;
       margin-bottom: 15px;
-      font-size: 1.8rem;
     }
     .plan p {
       font-size: 1.1rem;
-      margin-bottom: 15px;
-    }
-    .price {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .trial {
-      text-align: center;
-      margin-bottom: 30px;
-      font-style: italic;
+      margin-bottom: 20px;
       color: #ccc;
     }
+    .price {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    /* Trial */
+    .trial {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: #ddd;
+      margin-bottom: 40px;
+      user-select: none;
+    }
+
+    /* Payment */
     .payment {
       text-align: center;
-      margin-bottom: 40px;
+      font-size: 1.15rem;
+      color: #ccc;
+      margin-bottom: 60px;
+      user-select: none;
     }
-    .payment p {
-      font-size: 1.1rem;
-      margin-bottom: 5px;
+    .payment strong {
+      color: #f0a500;
     }
+
+    /* Footer */
     footer {
-      background-color: #1f1f1f;
-      padding: 15px 20px;
+      background-color: #181818;
+      padding: 18px 20px;
       text-align: center;
       font-size: 1rem;
-      border-top: 1px solid #333;
+      border-top: 2px solid #f0a500;
+      user-select: none;
     }
     a.whatsapp-link {
       color: #25d366;
       font-weight: 700;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
     a.whatsapp-link:hover {
+      color: #1ebe57;
       text-decoration: underline;
     }
-    @media (max-width: 600px) {
+
+    /* Responsive */
+    @media (max-width: 700px) {
       .plans {
         flex-direction: column;
         align-items: center;
@@ -114,45 +168,87 @@
       .plan {
         width: 90%;
       }
+      .caption {
+        font-size: 1.3rem;
+        max-width: 90%;
+        bottom: 20px;
+        left: 15px;
+      }
+      .slideshow {
+        max-height: 280px;
+      }
+      .slide {
+        height: 280px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>ComboTv</h1>
-  </header>
 
-  <main>
-    <p class="description">
-      Assista mais de 75 mil conteúdos como filmes, séries e canais ao vivo em até 4K.
-    </p>
+<header>ComboTv</header>
 
-    <div class="plans">
-      <div class="plan">
-        <h2>Plano 1 Tela</h2>
-        <p>Acesso em 1 tela simultânea</p>
-        <p class="price">R$ 30,00 / mês</p>
-      </div>
-      <div class="plan">
-        <h2>Plano 2 Telas</h2>
-        <p>Acesso em 2 telas simultâneas</p>
-        <p class="price">R$ 45,00 / mês</p>
-      </div>
+<main>
+
+  <section class="slideshow" aria-label="Destaques ComboTv">
+    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=1200&q=80');" aria-hidden="false">
+      <div class="caption">Mais de 75 mil filmes e séries em até 4K</div>
     </div>
-
-    <p class="trial">Teste grátis disponível para novos assinantes!</p>
-
-    <div class="payment">
-      <p>Formas de pagamento:</p>
-      <p><strong>Pix</strong> e <strong>Cartões de Crédito</strong></p>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80');" aria-hidden="true">
+      <div class="caption">Canais ao vivo para todos os gostos</div>
     </div>
-  </main>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=1200&q=80');" aria-hidden="true">
+      <div class="caption">Testes grátis para novos assinantes</div>
+    </div>
+  </section>
 
-  <footer>
-    Contato via WhatsApp: 
-    <a href="https://wa.me/5533999574160" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
-      (33) 99957-4160
-    </a>
-  </footer>
+  <section class="plans" aria-label="Planos ComboTv">
+    <article class="plan" tabindex="0" role="region" aria-labelledby="plan1-title">
+      <h2 id="plan1-title">Plano 1 Tela</h2>
+      <p>Acesso em 1 tela simultânea</p>
+      <p class="price">R$ 30,00 / mês</p>
+    </article>
+    <article class="plan" tabindex="0" role="region" aria-labelledby="plan2-title">
+      <h2 id="plan2-title">Plano 2 Telas</h2>
+      <p>Acesso em 2 telas simultâneas</p>
+      <p class="price">R$ 45,00 / mês</p>
+    </article>
+  </section>
+
+  <p class="trial" aria-live="polite">Teste grátis disponível para novos assinantes!</p>
+
+  <div class="payment">
+    <p>Formas de pagamento:</p>
+    <p><strong>Pix</strong> e <strong>Cartões de Crédito</strong></p>
+  </div>
+
+</main>
+
+<footer>
+  Contato via WhatsApp: 
+  <a href="https://wa.me/5533999574160" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+    (33) 99957-4160
+  </a>
+</footer>
+
+<script>
+  // Slideshow automático
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+      slide.setAttribute('aria-hidden', i !== index);
+    });
+  }
+
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+
+  setInterval(nextSlide, 5000); // troca a cada 5 segundos
+</script>
+
 </body>
 </html>
