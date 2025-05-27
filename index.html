@@ -5,56 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ComboTv - IPTV em até 4K</title>
   <style>
-    /* Reset básico */
+    /* Reset e base */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     body {
       background-color: #121212;
       color: #eee;
-      display: flex;
-      flex-direction: column;
       min-height: 100vh;
+      display: flex; flex-direction: column;
+      line-height: 1.5;
     }
     header {
       background-color: #181818;
-      padding: 20px 30px;
-      border-bottom: 2px solid #f0a500;
+      padding: 25px 30px;
+      border-bottom: 3px solid #f0a500;
       text-align: center;
-      font-weight: 700;
-      font-size: 2.8rem;
+      font-size: 3rem;
+      font-weight: 900;
       color: #f0a500;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       user-select: none;
     }
     main {
-      flex: 1;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 30px auto;
-      padding: 0 20px;
+      padding: 0 20px 60px;
+      flex-grow: 1;
     }
 
-    /* Slideshow container */
+    /* Slideshow */
     .slideshow {
       position: relative;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(240,165,0,0.5);
-      max-height: 400px;
-      margin-bottom: 40px;
+      max-height: 420px;
+      box-shadow: 0 0 25px #f0a500aa;
+      margin-bottom: 50px;
+      user-select: none;
     }
-
-    /* Slides */
     .slide {
       display: none;
       position: relative;
-      height: 400px;
+      height: 420px;
       background-position: center;
       background-size: cover;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1.2s ease-in-out;
     }
     .slide.active {
       display: block;
@@ -64,88 +61,168 @@
       from {opacity: 0;}
       to {opacity: 1;}
     }
-
-    /* Slide caption */
     .caption {
       position: absolute;
       bottom: 30px;
       left: 30px;
       color: #f0a500;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-      font-size: 1.6rem;
-      font-weight: 700;
-      max-width: 70%;
+      font-size: 1.9rem;
+      font-weight: 800;
+      text-shadow: 2px 2px 7px rgba(0,0,0,0.8);
+      max-width: 75%;
       user-select: none;
+    }
+    /* Nav dots */
+    .dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+    }
+    .dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #444;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .dot.active {
+      background: #f0a500;
+      box-shadow: 0 0 6px #f0a500;
     }
 
     /* Plans */
     .plans {
       display: flex;
-      gap: 25px;
       justify-content: center;
+      gap: 30px;
       flex-wrap: wrap;
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
     .plan {
       background-color: #222;
-      border-radius: 12px;
-      border: 2px solid #444;
-      padding: 30px 25px;
-      width: 280px;
+      border-radius: 14px;
+      padding: 35px 28px;
+      border: 2.5px solid #444;
+      width: 300px;
       text-align: center;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
       cursor: default;
+      user-select: none;
     }
     .plan:hover {
       border-color: #f0a500;
-      box-shadow: 0 0 15px #f0a500;
+      box-shadow: 0 0 20px #f0a500;
     }
     .plan h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: #f0a500;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
     }
     .plan p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
+      font-size: 1.15rem;
+      margin-bottom: 25px;
       color: #ccc;
     }
     .price {
-      font-size: 2.4rem;
-      font-weight: 800;
+      font-size: 2.6rem;
+      font-weight: 900;
       color: #fff;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     /* Trial */
     .trial {
       text-align: center;
       font-style: italic;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: #ddd;
-      margin-bottom: 40px;
+      margin-bottom: 70px;
       user-select: none;
     }
 
     /* Payment */
     .payment {
       text-align: center;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: #ccc;
-      margin-bottom: 60px;
+      margin-bottom: 80px;
       user-select: none;
     }
     .payment strong {
       color: #f0a500;
     }
 
+    /* FAQ */
+    .faq {
+      max-width: 900px;
+      margin: 0 auto 80px;
+    }
+    .faq h3 {
+      font-size: 2rem;
+      color: #f0a500;
+      margin-bottom: 25px;
+      text-align: center;
+      user-select: none;
+    }
+    .faq-item {
+      background: #222;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      border: 2px solid #444;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+    .faq-item:hover {
+      border-color: #f0a500;
+      box-shadow: 0 0 12px #f0a500;
+    }
+    .faq-question {
+      padding: 18px 25px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #f0a500;
+      user-select: none;
+      position: relative;
+    }
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.8rem;
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-question::after {
+      content: '-';
+      transform: translateY(-50%) rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 25px;
+      font-size: 1.1rem;
+      color: #ccc;
+      line-height: 1.5;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 15px 25px 25px;
+    }
+
     /* Footer */
     footer {
       background-color: #181818;
-      padding: 18px 20px;
+      padding: 22px 20px;
       text-align: center;
       font-size: 1rem;
-      border-top: 2px solid #f0a500;
+      border-top: 3px solid #f0a500;
       user-select: none;
     }
     a.whatsapp-link {
@@ -159,8 +236,8 @@
       text-decoration: underline;
     }
 
-    /* Responsive */
-    @media (max-width: 700px) {
+    /* Responsivo */
+    @media (max-width: 720px) {
       .plans {
         flex-direction: column;
         align-items: center;
@@ -169,10 +246,10 @@
         width: 90%;
       }
       .caption {
-        font-size: 1.3rem;
-        max-width: 90%;
-        bottom: 20px;
-        left: 15px;
+        font-size: 1.4rem !important;
+        max-width: 95% !important;
+        bottom: 20px !important;
+        left: 15px !important;
       }
       .slideshow {
         max-height: 280px;
@@ -196,8 +273,8 @@
     <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80');" aria-hidden="true">
       <div class="caption">Canais ao vivo para todos os gostos</div>
     </div>
-    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1497493292307-31c376b6e479?auto=format&fit=crop&w=1200&q=80');" aria-hidden="true">
-      <div class="caption">Testes grátis para novos assinantes</div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80');" aria-hidden="true">
+      <div class="caption">Futebol ao vivo na melhor qualidade</div>
     </div>
   </section>
 
@@ -221,33 +298,116 @@
     <p><strong>Pix</strong> e <strong>Cartões de Crédito</strong></p>
   </div>
 
+  <section class="faq" aria-label="Perguntas frequentes sobre ComboTv e IPTV">
+    <h3>FAQ - Perguntas Frequentes</h3>
+
+    <div class="faq-item" role="region" aria-labelledby="q1">
+      <button class="faq-question" aria-expanded="false" aria-controls="a1" id="q1">
+        O que é IPTV?
+      </button>
+      <div class="faq-answer" id="a1" role="region" aria-labelledby="q1" hidden>
+        IPTV é a transmissão de conteúdo de televisão através da internet, permitindo acesso a canais ao vivo, filmes e séries sem a necessidade de antenas ou cabos tradicionais.
+      </div>
+    </div>
+
+    <div class="faq-item" role="region" aria-labelledby="q2">
+      <button class="faq-question" aria-expanded="false" aria-controls="a2" id="q2">
+        Quais conteúdos estão disponíveis no ComboTv?
+      </button>
+      <div class="faq-answer" id="a2" role="region" aria-labelledby="q2" hidden>
+        Oferecemos mais de 75 mil conteúdos entre filmes, séries, canais ao vivo, incluindo canais esportivos com futebol em alta qualidade.
+      </div>
+    </div>
+
+    <div class="faq-item" role="region" aria-labelledby="q3">
+      <button class="faq-question" aria-expanded="false" aria-controls="a3" id="q3">
+        Posso usar em vários dispositivos?
+      </button>
+      <div class="faq-answer" id="a3" role="region" aria-labelledby="q3" hidden>
+        Sim! Temos planos para 1 ou 2 telas simultâneas, funcionando em smart TVs, celulares, computadores e tablets.
+      </div>
+    </div>
+
+    <div class="faq-item" role="region" aria-labelledby="q4">
+      <button class="faq-question" aria-expanded="false" aria-controls="a4" id="q4">
+        Como funciona o teste grátis?
+      </button>
+      <div class="faq-answer" id="a4" role="region" aria-labelledby="q4" hidden>
+        Novos assinantes podem solicitar um teste gratuito para experimentar o serviço por tempo limitado, sem compromisso.
+      </div>
+    </div>
+
+    <div class="faq-item" role="region" aria-labelledby="q5">
+      <button class="faq-question" aria-expanded="false" aria-controls="a5" id="q5">
+        Quais formas de pagamento são aceitas?
+      </button>
+      <div class="faq-answer" id="a5" role="region" aria-labelledby="q5" hidden>
+        Aceitamos Pix e cartões de crédito para facilitar sua assinatura.
+      </div>
+    </div>
+
+  </section>
 </main>
 
 <footer>
-  Contato via WhatsApp: 
-  <a href="https://wa.me/5533999574160" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
-    (33) 99957-4160
-  </a>
+  Contato via WhatsApp: <a href="https://wa.me/5533999574160" class="whatsapp-link" target="_blank" rel="noopener noreferrer">33 99957-4160</a>
 </footer>
 
 <script>
-  // Slideshow automático
+  // Slideshow automático e controle de pontos
   const slides = document.querySelectorAll('.slide');
-  let current = 0;
+  const dotsContainer = document.createElement('div');
+  dotsContainer.classList.add('dots');
+  document.querySelector('.slideshow').appendChild(dotsContainer);
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.classList.add('dot');
+    dot.setAttribute('aria-label', `Slide ${i + 1}`);
+    if(i === 0) dot.classList.add('active');
+    dotsContainer.appendChild(dot);
+
+    dot.addEventListener('click', () => {
+      showSlide(i);
+      resetTimer();
+    });
+  });
+
+  let currentIndex = 0;
+  let slideTimer = setInterval(nextSlide, 7000);
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
       slide.classList.toggle('active', i === index);
       slide.setAttribute('aria-hidden', i !== index);
+      dotsContainer.children[i].classList.toggle('active', i === index);
     });
+    currentIndex = index;
   }
-
   function nextSlide() {
-    current = (current + 1) % slides.length;
-    showSlide(current);
+    let next = (currentIndex + 1) % slides.length;
+    showSlide(next);
+  }
+  function resetTimer() {
+    clearInterval(slideTimer);
+    slideTimer = setInterval(nextSlide, 7000);
   }
 
-  setInterval(nextSlide, 5000); // troca a cada 5 segundos
+  // FAQ toggle
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+      if(isOpen){
+        answer.removeAttribute('hidden');
+      } else {
+        answer.setAttribute('hidden', '');
+      }
+    });
+  });
 </script>
 
 </body>
